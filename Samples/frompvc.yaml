@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+    # Creates a new volume and pvc from the current pvc named redis-master-claim
+    name: pure-fa-snapshot-from-pvc-claim
+    annotations:
+      clone.pvc.beta.purestorage.com/name: redis-master-claim
+spec:
+     accessModes:
+       - ReadWriteOnce
+    # storage size must be exact same as snapshot
+     resources:
+       requests:
+         storage: 2Gi
+     # Matches the name defined in deployment/storageclass.yaml
+     storageClassName: pure-block

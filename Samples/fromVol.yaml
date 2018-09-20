@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+    # this will import and rename the volume on the FA named restoreDS
+    name: pure-restore-ds
+    annotations:
+      import.volume.beta.purestorage.com/name: restoreDS
+spec:
+     accessModes:
+       - ReadWriteOnce
+    # storage size must be exact same as snapshot
+     resources:
+       requests:
+         storage: 10Gi
+     # Matches the name defined in deployment/storageclass.yaml
+     storageClassName: pure-block
