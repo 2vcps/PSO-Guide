@@ -6,10 +6,9 @@ Pure Service Orchestrator Documentation
 
 ### Supported Install
 
-[Install Helm and PSO](installation_PSO.md)
-Setup Pure Service Orchestrator
-
-[pure.yaml](/Samples/pure.yaml)
+- Setup Pure Service Orchestrator[Install Helm and PSO](installation_PSO.md)
+- Sample pure.yaml file -> [pure.yaml](/Samples/pure.yaml)
+- Manual (unsupported non-helm install)
 
 ### How to Operate
 
@@ -19,4 +18,6 @@ Setup Pure Service Orchestrator
 
 ### How to Troubleshoot
 
+- [Troubleshooting Doc](troubleshooting.md)
 
+Continuing to have problems? Let me know.
