@@ -43,7 +43,9 @@
 
    Depending on the output there are a few causes of this behavior.
   - Array is Fiber Channel but helm installation is set to iSCSI
+    - Reinstall helm with the yaml set to FC
   - iSCSI stack on linux host is not using unique IQN or other open-iSCSI issue.
+    - On fresh installations and clones of VM's I often must restart open-iscsi on the worker nodes.
   - Is the PVC "Bound" but the POD mounting the PVC stuck at "pending"?
     - Could be a mismatch or typo of the pvc name. Check the yaml for pod and pvc.
     - The following commands could provide additional insight. ```kubectl describe pvc <pvc name>``` or ```kubectl describe pod <pod name>```
@@ -53,7 +55,7 @@
       kubectl get pod -o wide
       ```
 
-      This will output the host trying to start the pod. 
+      This will output the host trying to start the pod.
 
       ```bash
       kubectl logs pure-flex-<uid>
@@ -73,13 +75,13 @@
       docker container ls
       #or
       sudo docker container ls
-      
+
       docker logs <name of kubelet container>
       #or
       sudo docker logs <name of kubelet container>
       ```
 
       Look for **err=no volume plugin matched** in the logs.
-      If this is in the logs this means the kubelet is unable to find the plugin at the path it uses for plugins. Please refer to the installation intructions for PSO on modify the flex install path to match your installation. Openshift, Rancher, Kubespray all have different paths for the kubelet to find volume plugins.
+        - If this is in the logs this means the kubelet is unable to find the plugin at the path it uses for plugins. Please refer to the installation intructions for PSO on modify the flex install path to match your installation. Openshift, Rancher, Kubespray all have different paths for the kubelet to find volume plugins.
 
       [Install PSO Document](installation_PSO.md)

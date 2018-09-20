@@ -12,5 +12,10 @@ arrays:
         failure-domain.beta.kubernetes.io/zone: "EAST"
 orchestrator:
   k8s:
-    flexBaseDir: /var/lib/kubelet/volume-plugins/
-    flexPath: /var/lib/kubelet/volume-plugins/
+    flexBaseDir: /var/lib/kubelet/volumeplugins/
+    flexPath: /var/lib/kubelet/volumeplugins/
+# Or it could be the path below
+#orchestrator:
+#  k8s:
+#    flexBaseDir: /var/lib/kubelet/volume-plugins/
+#    flexPath: /var/lib/kubelet/volume-plugins/
