@@ -24,3 +24,9 @@ Pure Service Orchestrator Documentation
 - [Troubleshooting Doc](troubleshooting.md)
 
 Continuing to have problems? Let me know.
+
+### Storage Quotas
+
+Now PSO but related.
+
+- [Quotas for a namespace Example](/quota-example/)
