@@ -8,7 +8,10 @@ Pure Service Orchestrator Documentation
 
 - Setup Pure Service Orchestrator[Install Helm and PSO](installation_PSO.md)
 - Sample pure.yaml file -> [pure.yaml](/Samples/pure.yaml)
-- Manual (unsupported non-helm install)
+
+### Manual (unsupported non-helm install)
+
+- Don't do this yet.
 
 ### How to Operate
 
