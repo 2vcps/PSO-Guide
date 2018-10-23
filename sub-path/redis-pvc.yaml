@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-pvc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: pure-file
+spec:
+  selector:
+        matchExpressions:
+        - key: "failure-domain.beta.kubernetes.io/zone"
+          operator: In
+          values: ["WEST"]
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
