@@ -1,13 +1,15 @@
 # PSO-Guide
 
-Pure Service Orchestrator Documentation
+Pure Service Orchestrator Documentation 
 
 ## How to Install
 
 ### Supported Install
 
-- Setup Pure Service Orchestrator[Install Helm and PSO](installation_PSO.md)
+- Setup Pure Service Orchestrator for Kubernetes[Install Helm and PSO](installation_PSO.md)
 - Sample pure.yaml file -> [pure.yaml](/Samples/pure.yaml)
+- How to install for Docker / Docker Swarm -> [Docker and Swarm](docker.md)
+
 
 ### Manual (unsupported non-helm install)
 
@@ -27,6 +29,6 @@ Continuing to have problems? Let me know.
 
 ### Storage Quotas
 
-Now PSO but related.
+Not PSO but related.
 
 - [Quotas for a namespace Example](/quota-example/)
