@@ -97,3 +97,27 @@ To do an automated install without confirming the permissions and accepting all 
 ```bash
 docker plugin install store/purestorage/docker-plugin:3.3 --alias pure --grant-all-permissions
 ```
+
+### Docker Swarm
+
+After the plugin is installed. For Docker Swarm you must first disable the plugin. The following command works if you set the alias to pure as mentioned above.
+
+```bash
+docker plugin disable pure
+```
+
+Now set the Namesapce. This will let volumes be remounted by other nodes in your Docker Swarm.
+
+```bash
+docker plugin set pure PURE_DOCKER_NAMESPACE=<clusterid>
+```
+
+<clusterid> is name of your cluster. Make sure it is unique if you have multiple clusters attaching to the same FlashArray or FlashBlade.
+
+Re-enable the plugin.
+
+```bash
+docker plugin enable pure
+```
+
+### Mesos

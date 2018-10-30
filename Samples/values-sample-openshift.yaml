@@ -1,0 +1,19 @@
+rrays:
+  FlashArrays:
+    - MgmtEndPoint: "1.1.1.1"
+      APIToken: "token000"
+      Labels:
+        local.cluster/rack: "38"
+        failure-domain.beta.kubernetes.io/zone: "WEST"
+    - MgmtEndPoint: "1.1.1.3"
+      APIToken: "token0001"
+      Labels:
+        local.cluster/rack: "40"
+        failure-domain.beta.kubernetes.io/zone: "EAST"
+orchestrator:
+  name: openshift
+  openshift:
+    # flexBaseDir is for image.tag < 2.0
+    flexBaseDir: /etc/origin/node/kubelet-plugins
+    # flexPath is for image.tag >= 2.0
+    flexPath: /etc/origin/node/kubelet-plugins/volume/exec
