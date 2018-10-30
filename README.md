@@ -6,7 +6,7 @@ Pure Service Orchestrator Documentation
 
 ### Supported Install
 
-- Setup Pure Service Orchestrator for Kubernetes[Install Helm and PSO](installation_PSO.md)
+- Setup Pure Service Orchestrator for Kubernetes [Install Helm and PSO](installation_PSO.md)
 - Sample pure.yaml file -> [pure.yaml](/Samples/pure.yaml)
 - How to install for Docker / Docker Swarm -> [Docker and Swarm](docker.md)
 

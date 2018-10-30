@@ -123,6 +123,8 @@ helm install -n mc-demo stable/minecraft --set minecraftServer.eula=true
 One common reason for problems using PSO is small variances in where different distros of K8s set as the path for kubelet to look for volume plugins. This may result in the logs reporting no matching plugin, even after the volume is provisioned and bound to a PVC.
 
 1. [Kubespray](/Samples/values-sample-kubespray.yaml)
-2. Openshift
-3. Rancher (rke)
-4. Kubeadm
+2. [Openshift](/Samples/values-sample-openshift.yaml)
+3. [Rancher (rke)](/Samples/values-sample-rancher.yaml)
+4. [Kubeadm](Samples/values-sample-kubeadm.yaml) <- Techincally this is default with no changes for the Flex Path. 
+
+Remember if you don't specifically override something in your local settings file. It will default to the values.yaml that is in the helm chart. You can see the current default file here in the Pure Storage Helm Repo. [values.yaml](https://github.com/purestorage/helm-charts/blob/master/pure-k8s-plugin/values.yaml)
