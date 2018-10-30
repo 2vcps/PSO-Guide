@@ -30,7 +30,7 @@ Continuing to have problems? Let me know.
 
 Not PSO but related.
 
-- [Quotas for a namespace Example](/quota-example/)
+- [Quotas for a namespace Example](./quota-example/)
 
 ### Using  a sub path
 
