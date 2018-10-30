@@ -112,7 +112,7 @@ Now set the Namesapce. This will let volumes be remounted by other nodes in your
 docker plugin set pure PURE_DOCKER_NAMESPACE=<clusterid>
 ```
 
-<clusterid> is name of your cluster. Make sure it is unique if you have multiple clusters attaching to the same FlashArray or FlashBlade.
+Where `<clusterid>` is name of your cluster. Make sure it is unique if you have multiple clusters attaching to the same FlashArray or FlashBlade.
 
 Re-enable the plugin.
 

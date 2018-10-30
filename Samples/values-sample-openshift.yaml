@@ -1,4 +1,4 @@
-rrays:
+arrays:
   FlashArrays:
     - MgmtEndPoint: "1.1.1.1"
       APIToken: "token000"
