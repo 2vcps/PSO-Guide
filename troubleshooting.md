@@ -41,16 +41,19 @@
    kubectl logs pure-provisioner-<unique id>
    ```
 
-   Depending on the output there are a few causes of this behavior.
-  - Array is Fiber Channel but helm installation is set to iSCSI
+Depending on the output there are a few causes of this behavior.
+- Array is Fiber Channel but helm installation is set to iSCSI
     - Reinstall helm with the yaml set to FC
-  - iSCSI stack on linux host is not using unique IQN or other open-iSCSI issue.
+- iSCSI stack on linux host is not using unique IQN or other open-iSCSI issue.
     - On fresh installations and clones of VM's I often must restart open-iscsi on the worker nodes.
-  - The Pure provisioner doesn't have the proper permissions to provision Kubernetes PV resources. 
-    - This is commonly the case if you get an error message similar to:   
-  `Failed to list *v1.StorageClass: storageclasses.storage.k8s.io is forbidden: User "system:serviceaccount:<namespace>:<account>" cannot list storageclasses.storage.k8s.io at the cluster scope`   
-  The solution consists of granting said account the proper cluster admin permissions by running the following command line:    
-  `kubectl create clusterrolebinding default-admin-rbac --clusterrole=cluster-admin --serviceaccount=<namespace>:<account`   
+- If you run into this error message or something similar:
+
+```Failed to list *v1.StorageClass: storageclasses.storage.k8s.io is forbidden: User "system:serviceaccount:<namespace>:<account>" cannot list storageclasses.storage.k8s.io at the cluster scope```
+
+  This means you have not granted cluster-admin role to the pure provisioner. You can grant that by running the command :
+
+```kubectl create clusterrolebinding default-admin-rbac --clusterrole=cluster-admin --serviceaccount=<namespace>:<account```
+
   - Is the PVC "Bound" but the POD mounting the PVC stuck at "pending"?
     - Could be a mismatch or typo of the pvc name. Check the yaml for pod and pvc.
     - The following commands could provide additional insight. ```kubectl describe pvc <pvc name>``` or ```kubectl describe pod <pod name>```
@@ -87,6 +90,6 @@
       ```
 
       Look for **err=no volume plugin matched** in the logs.
-        - If this is in the logs this means the kubelet is unable to find the plugin at the path it uses for plugins. Please refer to the installation intructions for PSO on modify the flex install path to match your installation. Openshift, Rancher, Kubespray all have different paths for the kubelet to find volume plugins.
+      - If this is in the logs this means the kubelet is unable to find the plugin at the path it uses for plugins. Please refer to the installation intructions for PSO on modify the flex install path to match your installation. Openshift, Rancher, Kubespray all have different paths for the kubelet to find volume plugins.
 
       [Install PSO Document](installation_PSO.md)
