@@ -46,6 +46,11 @@
     - Reinstall helm with the yaml set to FC
   - iSCSI stack on linux host is not using unique IQN or other open-iSCSI issue.
     - On fresh installations and clones of VM's I often must restart open-iscsi on the worker nodes.
+  - The Pure provisioner doesn't have the proper permissions to provision Kubernetes PV resources. 
+    - This is commonly the case if you get an error message similar to:   
+  `Failed to list *v1.StorageClass: storageclasses.storage.k8s.io is forbidden: User "system:serviceaccount:<namespace>:<account>" cannot list storageclasses.storage.k8s.io at the cluster scope`   
+  The solution consists of granting said account the proper cluster admin permissions by running the following command line:    
+  `kubectl create clusterrolebinding default-admin-rbac --clusterrole=cluster-admin --serviceaccount=<namespace>:<account`   
   - Is the PVC "Bound" but the POD mounting the PVC stuck at "pending"?
     - Could be a mismatch or typo of the pvc name. Check the yaml for pod and pvc.
     - The following commands could provide additional insight. ```kubectl describe pvc <pvc name>``` or ```kubectl describe pod <pod name>```
@@ -67,7 +72,7 @@
       tail /var/log/syslog
       ```
 
-      If you are running a K8s version that uses a containerized kubelet (Rancher, some installs of Openshift and others.)
+      If you are running a K8s version that uses a containerized kubelet (Rancher, some installs of OpenShift and others.)
 
       ```bash
       # you may need to be root depending on your container engine installation
