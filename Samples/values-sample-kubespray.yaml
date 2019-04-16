@@ -14,4 +14,4 @@ arrays:
 orchestrator:
   k8s:
    flexBaseDir: /var/lib/kubelet/volume-plugins/
-  flexPath: /var/lib/kubelet/volume-plugins/
+   flexPath: /var/lib/kubelet/volume-plugins/
