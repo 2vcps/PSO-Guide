@@ -10,9 +10,8 @@ arrays:
       Labels:
         local.cluster/rack: "40"
         failure-domain.beta.kubernetes.io/zone: "EAST"
-#As of the latest git clone of kubespray on December 18, 2018 this section appears to default to the same settings as Kubeadm
-#Uncomment if you are using an older verson of kubespray, but why would you do that?
-#        orchestrator:
-#  k8s:
-#    flexBaseDir: /var/lib/kubelet/volume-plugins/
-#    flexPath: /var/lib/kubelet/volume-plugins/
+
+orchestrator:
+  k8s:
+   flexBaseDir: /var/lib/kubelet/volume-plugins/
+  flexPath: /var/lib/kubelet/volume-plugins/
