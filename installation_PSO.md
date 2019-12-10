@@ -1,9 +1,9 @@
 # Installing PSO
-If you are using K8s 1.7+ you must install helm using and RBAC account.
-More information here
-[Helm and RBAC](https://docs.helm.sh/using_helm/#role-based-access-control)
+Openshift 3.11+ should use the Operator. 
 
-Also, certain OS's might have alternate installation methods. Helm must be working and the tiller pod must be running before you proceed to isntalling PSO or else it will fail.
+Upstream k8s can use either. Check official docs for versions and compatibility.
+
+Also, certain OS's might have alternate installation methods. Helm must be working.
 [Helm Installation Documentation](https://docs.helm.sh/using_helm/#installing-helm)
 
 ### Installing Helm
