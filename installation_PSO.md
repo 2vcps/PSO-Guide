@@ -19,33 +19,8 @@ You should now be able to run and get an output.
 ```
 helm help
 ```
-
-To install helm:
-1. Download the [rbac-tiller.yaml](/Samples/rbac-tiller.yaml) file and create the service account and role binding for tiller.
-```
-$ kubectl create -f rbac-config.yaml
-serviceaccount "tiller" created
-clusterrolebinding "tiller" created
-```
-2. Then initialize helm from your client. This will setup tiller and your client to access the k8s cluster.
-```
-$ helm init --service-account tiller
-```
-
-Now you can run and receive similar output:
-```
-$ helm version
-Client: &version.Version{SemVer:"v2.10.0", GitCommit:"9ad53aac42165a5fadc6c87be0dea6b115f93090", GitTreeState:"clean"}
-Server: &version.Version{SemVer:"v2.10.0", GitCommit:"9ad53aac42165a5fadc6c87be0dea6b115f93090", GitTreeState:"clean"}
-```
-
-Verify tiller is running which it should be if you received a "server" response above.
-```
-kubectl -n kube-system get pod
-<snip>
-tiller-deploy-56c4cf647b-jqzpw          1/1       Running   0          5d
-</snip>
-```
+**Helm is now tillerless! So that section is now gone!**
+*RIP Tiller*
 
 Now you may install PSO.
 
@@ -61,46 +36,48 @@ helm repo update
 Verify it is adding correctly by searching for the Pure K8s plugin (aka PSO)
 ```
 helm search pure-k8s-plugin
+# OR
+helm search pure-csi
 ```
 You must create a values.yaml refer to readme link above for full set of options or use the sample pure.yaml for your FlashArray or FlashBlade management IP and API token information. [Sample Pure.yaml](/Samples/pure.yaml)
 
 Dry run the installation to be sure your values.yaml is correct.
 
 ```
-$ helm install --name pure-service-orchestrator pure/pure-k8s-plugin -f <your_own_dir>/yourvalues.yaml --dry-run --debug
+helm install pure-service-orchestrator pure/pure-k8s-plugin -f <your_own_dir>/yourvalues.yaml --dry-run --debug
+# OR
+helm install pure-service-orchestrator pure/pure-csi -f values.yaml --dry-run --debug
 ```
 
-Now, run the install
+Now, run the install if it is 2019 or after use CSI unless you are on old K8s
 ```
-$ helm install --name pure-service-orchestrator pure/pure-k8s-plugin -f <your_own_dir>/yourvalues.yaml
+helm install pure-service-orchestrator pure/pure-csi -f values.yaml --dry-run --debug
 ```
 
 Check that PSO is fully running.
 
 ```
 $ kubectl get pod
-NAME                                READY     STATUS    RESTARTS   AGE
-pure-flex-2tbzg                     1/1       Running   0          4d
-pure-flex-5nn4g                     1/1       Running   0          4d
-pure-flex-6hc7f                     1/1       Running   0          4d
-pure-flex-6qzlf                     1/1       Running   0          4d
-pure-flex-7zzvk                     1/1       Running   0          4d
-pure-flex-fnp26                     1/1       Running   0          4d
-pure-flex-kwhj6                     1/1       Running   0          4d
-pure-flex-mfrvl                     1/1       Running   0          4d
-pure-flex-mp8ms                     1/1       Running   0          4d
-pure-flex-pm25s                     1/1       Running   0          4d
-pure-flex-rgxbv                     1/1       Running   0          4d
-pure-provisioner-5554b5bcdc-wtdnr   1/1       Running   0          4d
+NAME                             READY   STATUS    RESTARTS   AGE
+pure-csi-bcl6t                   3/3     Running   0          20h
+pure-csi-k87fd                   3/3     Running   0          20h
+pure-csi-krt7v                   3/3     Running   0          20h
+pure-csi-r724p                   3/3     Running   0          20h
+pure-csi-rtbkx                   3/3     Running   0          20h
+pure-csi-sv6lj                   3/3     Running   0          20h
+pure-csi-vxq2m                   3/3     Running   0          20h
+pure-provisioner-0               3/3     Running   0          20h
 ```
 ### Storage Classes
 List your Storage Classes
 ```
 $ kubectl get storageclasses
-NAME         PROVISIONER        AGE
-pure         pure-provisioner   4d
-pure-block   pure-provisioner   4d
-pure-file    pure-provisioner   4d
+NAME           PROVISIONER              AGE
+cns-vvols      csi.vsphere.vmware.com   26d
+fa-cns-vvols   csi.vsphere.vmware.com   26d
+pure           pure-csi                 20h
+pure-block     pure-csi                 20h
+pure-file      pure-csi                 20h
 ```
 By default PSO does not force any of the built in storage classes to be default. If you would like to make a StorageClass default it can be done with the following command. This will be the default class that will be used whenever a Persistent Volume Claim is made without specifying a storage class. 
 _The "pure" StorageClass is to support older versions of the pure plugin and is the same as the "pure-block" class. It is reccomended to make pure-block or pure-file default if needed._
@@ -112,9 +89,11 @@ _The "pure" StorageClass is to support older versions of the pure plugin and is 
 
 ### Sample helm chart to test storage provisioning
 
-I use the helm chart for minecraft because it is a small sample java app that will mount a directory from a PVC with the following command to get started:
+Go Web App in the PSO-Guide [Demo Go Web App](gowebapp-demo/README.md)
 ```
-helm install -n mc-demo stable/minecraft --set minecraftServer.eula=true
+kubectl apply -f 1-mysql-deployment-pvc.yaml
+# wait for it to initialize the DB, if you are impatient it is ok the web app might fail and restart a few times until the DB responds.
+kubectl apply -f 2-gowebapp-depployment-pvc.yaml
 ```
 
 

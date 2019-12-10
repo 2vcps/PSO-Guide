@@ -24,8 +24,8 @@ Additional Information for snapshots and CSI
 - [From Operator](https://github.com/purestorage/helm-charts/tree/master/operator-csi-plugin#csi-snapshot-and-clone-features-for-kubernetes)
 
 ### PKS Enterprise Deployment Guide
-[PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
-[VMware Marketplace](https://marketplace.vmware.com/vsx/solutions/pure-service-orchestrator-2-5-2?ref=search)
+- [PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
+- [VMware Marketplace](https://marketplace.vmware.com/vsx/solutions/pure-service-orchestrator-2-5-2?ref=search)
 
 
 ### How to Troubleshoot
