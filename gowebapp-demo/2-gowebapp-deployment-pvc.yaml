@@ -1,0 +1,42 @@
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: gowebapp 
+  labels:
+    run: gowebapp
+    tier: frontend 
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80 
+  selector:
+    run: gowebapp
+    tier: frontend
+---
+apiVersion: apps/v1 
+kind: Deployment 
+metadata:
+   name: gowebapp
+   labels:
+     run: gowebapp
+     tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: gowebapp
+      tier: frontend
+  template: 
+    metadata:
+      labels:
+        run: gowebapp
+        tier: frontend 
+    spec:
+      containers:
+      - name: gowebapp
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: purestorage
+        image: jowings/gowebapp:0.3
+        ports:
+        - containerPort: 80
