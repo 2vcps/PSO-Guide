@@ -20,6 +20,9 @@ Pure Service Orchestrator Documentation
 - [New PVC from existing PVC](Samples/frompvc.yaml)
 - [New PVC from existing Volume](Samples/fromVol.yaml) **Note, this is will import and rename a volume to be used by PSO.**
 
+### PKS Enterprise Deployment Guide
+[PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
+
 ### How to Troubleshoot
 
 - [Troubleshooting Doc](troubleshooting.md)
