@@ -20,8 +20,8 @@ Pure Service Orchestrator Documentation
 **Snapshot and clones for CSI**
 
 Additional Information for snapshots and CSI
-[From Helm](https://github.com/purestorage/helm-charts/tree/master/pure-csi#csi-snapshot-and-clone-features-for-kubernetes)
-[From Operator](https://github.com/purestorage/helm-charts/tree/master/operator-csi-plugin#csi-snapshot-and-clone-features-for-kubernetes)
+- [From Helm](https://github.com/purestorage/helm-charts/tree/master/pure-csi#csi-snapshot-and-clone-features-for-kubernetes)
+- [From Operator](https://github.com/purestorage/helm-charts/tree/master/operator-csi-plugin#csi-snapshot-and-clone-features-for-kubernetes)
 
 ### PKS Enterprise Deployment Guide
 [PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
