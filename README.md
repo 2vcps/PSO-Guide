@@ -22,6 +22,8 @@ Pure Service Orchestrator Documentation
 
 ### PKS Enterprise Deployment Guide
 [PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
+[VMware Marketplace](https://marketplace.vmware.com/vsx/solutions/pure-service-orchestrator-2-5-2?ref=search)
+
 
 ### How to Troubleshoot
 
