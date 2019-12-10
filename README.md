@@ -6,19 +6,21 @@ Pure Service Orchestrator Documentation
 
 ### Supported Install
 
-- Setup Pure Service Orchestrator for Kubernetes [Install Helm and PSO](installation_PSO.md)
-- Sample pure.yaml file -> [pure.yaml](/Samples/pure.yaml)
+- Use the helm or Operator Install for CSI - [CSI Helm](https://github.com/purestorage/helm-charts/tree/master/pure-csi) or [CSI Operator](https://github.com/purestorage/helm-charts/tree/master/operator-csi-plugin)
+- Use the helm or Operator Install for FlexVolume - [Flex Helm](https://github.com/purestorage/helm-charts/tree/master/pure-k8s-plugin) or [Flex Operator](https://github.com/purestorage/helm-charts/tree/master/operator-k8s-plugin)
 - How to install for Docker / Docker Swarm -> [Docker and Swarm](docker.md)
-
-### Manual (unsupported non-helm install)
-
-- Don't do this yet.
 
 ### How to Operate
 
+**This is for the FlexVolume Driver only**
 - [New PVC from a Snapshot](/Samples/fromsnap.yaml)
 - [New PVC from existing PVC](Samples/frompvc.yaml)
 - [New PVC from existing Volume](Samples/fromVol.yaml) **Note, this is will import and rename a volume to be used by PSO.**
+
+**Snapshot and clones for CSI**
+Additional Information for snapshots and CSI
+[From Helm](https://github.com/purestorage/helm-charts/tree/master/pure-csi#csi-snapshot-and-clone-features-for-kubernetes)
+[From Operator](https://github.com/purestorage/helm-charts/tree/master/operator-csi-plugin#csi-snapshot-and-clone-features-for-kubernetes)
 
 ### PKS Enterprise Deployment Guide
 [PKS Enterprise Deployment Guide](PureStorage_and_PKS_Enterprise.pdf)
