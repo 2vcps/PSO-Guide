@@ -1,3 +1,7 @@
+# This guide is no longer maintained. Some of the information may still be relevant but for official documentation and samples please visit.
+# [PSO 6 REPO](https://github.com/purestorage/pso-csi)
+# [PSO 5 REPO](https://github.com/purestorage/helm-charts)
+
 # PSO-Guide
 
 Pure Service Orchestrator Documentation
